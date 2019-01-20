@@ -1,0 +1,24 @@
+<div class="row pt-5">
+  <div class="col-md-6 mx-auto">
+    <div class="card rounded-0">
+      <h3 class="mb-0">Login</h3>
+    </div>
+    <div class="card-body">
+      <form [formGroup]="logForm" (ngSubmit)="logIn($event)">
+        <div class="form-group">
+          <label for="">User-name</label>
+          <input name="id" formControlName="id" type="text" class="form-control rounded-0" required>
+        </div>
+
+        <div class="form-group">
+          <label for="">Password</label>
+          <input type="password" formControlName="pass" name="pass" class="form-control rounded-0" required>
+        </div>
+        <div class="alert alert-danger" role="alert" *ngIf="errorMessage!=''" >
+          {{ this.errorMessage }}
+        </div>
+        <button (click)="logIn()" type="button" class="btn btn-success float-right">Login</button>
+      </form>
+    </div>
+  </div>
+</div>

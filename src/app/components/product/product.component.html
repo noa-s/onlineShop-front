@@ -1,0 +1,13 @@
+<div class="card m-2" style="width: 12rem; display: inline-block;" (click)="passProduct()" *ngIf="product.id">
+  <!--  -->
+  <img class="card-img-top" src="{{ product.imgUrl }}" alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-title">{{ product.name }}</h5>
+    <p class="card-text">{{ product.price | currency }}</p>
+    <h5 *ngIf="! isAdminUser " class="badge badge-pill badge-info" data-target='#orderProductModal' data-toggle="modal"
+      (click)="toggleOrder()">Click To Order</h5>
+    <app-add-prod *ngIf="showOrderModal" class="modal fade" id="orderProductModal" tabindex="-1" role="dialog"
+      [productInfo]="product" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    </app-add-prod>
+  </div>
+</div>

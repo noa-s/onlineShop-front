@@ -1,0 +1,75 @@
+<div class="continer">
+  <h1>Registragion</h1>
+  <form [formGroup]="regForm" (ngSubmit)="register($event)" class="col-sm-12">
+    <div class="row pt-5">
+      <div class="col-md-6">
+        <div class="card rounded-0">
+          <h3 class="mb-0 m-15px">Step-1</h3>
+          <div class="alert alert-danger" role="alert" *ngIf="this.errorMessage">
+            {{ this.errorMessage }}
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="form-group">
+            <label for="">Serial-id</label>
+            <input type="text" formControlName="id" class="form-control rounded-0" [ngClass]=" {'is-invalid': regForm.controls.id.invalid && !regForm.untouched }"
+              required>
+            <!-- [ngClass]=" {'is-invalid': regForm.controls.id.invalid && !regForm.untouched }"  -->
+          </div>
+          <div class="form-group">
+            <label for="">Email</label>
+            <input type="email" formControlName="email" class="form-control rounded-0" required>
+          </div>
+          <div class="form-group">
+            <label for="">Password</label>
+            <input type="password" formControlName="pass" class="form-control rounded-0" required>
+          </div>
+          <div class="form-group">
+            <label for="">Re-Password</label>
+            <input type="password" formControlName="confpass" class="form-control rounded-0" required>
+          </div>
+          <button (click)="nextFunction()" type="button" class="btn btn-primary float-right">Next</button>
+
+        </div>
+      </div>
+      <!-- [ngClass]="{'active': isActive, 'disabled': isDisabled}" -->
+      <div class="col-md-6 " [ngClass]="{'active': isActive, 'disabled': isDisabled}">
+        <div class="card rounded-0">
+          <h3 class="mb-0">Step-2</h3>
+        </div>
+        <!-- *ngIf="this.nextCheck && regForm.controls['email'].valid" -->
+        <div class="card-body" *ngIf="this.nextCheck && regForm.controls['email'].valid">
+          <div class="form-group mb-5">
+            <label for="">City</label>
+            <select class="form-control" formControlName="city" placeholder="City" required>
+              <option>Holon</option>
+              <option>Bat-Yam</option>
+              <option>Rishon-lezion</option>
+              <option>Ber-sheva</option>
+              <option>Tel-Aviv</option>
+              <option>Rehovot</option>
+              <option>Ashdod</option>
+              <option>Ashkelon</option>
+              <option>Haifa</option>
+              <option>Eilat</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="">Street</label>
+            <input type="text" formControlName="street" class="form-control rounded-0" required>
+          </div>
+          <div class="form-group">
+            <label for="">First-Name</label>
+            <input type="text" formControlName="firstName" class="form-control rounded-0" required>
+          </div>
+          <div class="form-group">
+            <label for="">Last-Name</label>
+            <input type="text" formControlName="lastName" class="form-control rounded-0" required>
+          </div>
+          <button (click)="register()" [disabled]="regForm.invalid" type="button" class="btn btn-success float-right">Submit</button>
+          <!-- [disabled]="registerForm.invalid" -->
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

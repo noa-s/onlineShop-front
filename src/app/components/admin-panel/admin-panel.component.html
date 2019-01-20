@@ -1,0 +1,46 @@
+<div class="jumbotron">
+  <h2>Admin Panel </h2>
+  <label for="newProduct">New Product
+    <i class="fa fa-plus newProduct" (click)="addNewProduct()"></i></label>
+  <div class="alert alert-danger" role="alert" *ngIf='this.errMsg'>
+    {{ this.errMsg }}
+  </div>
+  <!-- <div class="alert alert-success" role="alert" *ngIf='this.succMsg'>
+    {{ this.succMsg }}
+  </div> -->
+  <form [formGroup]="updateForm" (ngSubmit)="saveChanges() ">
+    <div class="form-group">
+      <label class="col-form-label">Product Name</label>
+      <input type="text" placeholder="Product Name" class="form-control" formControlName="name" />
+    </div>
+    <div class="form-row">
+        <!-- *ngIf="updateOrSave" -->
+      <div class="form-group col-md-4">
+        <label class="col-form-label">Product Id</label>
+        <input type="text" placeholder="Product ID" class="form-control" formControlName="id" (blur)="checkAvailability()" />
+      </div>
+      <div class="form-group col-md-4"> 
+        <label class="col-form-label">Catagory Name</label>
+        <select class="form-control" formControlName="catagoryName" >
+          <option value="Milk">Milk</option>
+          <option value="Meat">Meat</option>
+          <option value="Veg">Veg</option>
+          <option value="Fruit">Fruit</option>
+          <option value="Drink">Drink</option>
+          <option value="Fish">Fisht</option>
+        </select>
+        <!-- <input type="text" placeholder="Catagory" class="form-control" formControlName="catagoryId" /> -->
+      </div>
+      <div class="form-group col-md-4">
+        <label class="col-form-label">Price </label>
+        <input type="number" placeholder="Price" class="form-control" formControlName="price" />
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-form-label">Img Url</label>
+      <input type="text" placeholder="Image Url " class="form-control" formControlName="imgUrl" />
+    </div>
+
+    <button class="btn btn-danger"> Add/Save </button>
+  </form>
+</div>

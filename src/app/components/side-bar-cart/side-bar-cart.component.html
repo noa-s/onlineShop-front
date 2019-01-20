@@ -1,0 +1,23 @@
+<small><span class="badge badge-pill badge-dark"  (click)="changeTrigger()">Open Cart</span></small>
+<div class="jumbotron" *ngIf=" !minTrigger">
+    <h2>My Cart
+        <span style="float: right" class="badge badge-pill badge-primary">
+           Total : {{ totalCartPrice | currency:'ILS'}}</span>
+      </h2>
+    <h5 *ngIf="flag">
+        <span  class="badge badge-pill badge-primary"
+        (click)="auth.deleteCartProducts()">Delete Cart</span>
+        <a  style="float: right" [routerLink]="['/checkout']" class="badge badge-pill badge-success"
+          routerLinkActive="router-link-active">Check-Out</a>
+    </h5>
+    <h5 *ngIf="! flag">
+        <a [routerLink]="['/shop']"  class="badge badge-pill badge-info"
+          routerLinkActive="router-link-active">Back to Shop</a>
+    </h5>
+  <br/>
+  <ul class="list-group col-sm-12" >
+    <app-sidebar *ngFor="let product of allProducts" [sBarproduct]="product"
+    class="list-group-item list-group-item-action flex-column align-items-start "></app-sidebar>
+  </ul>
+  <small><span class="badge badge-pill badge-dark" (click)="changeTrigger()">Close Cart</span></small>
+</div>
